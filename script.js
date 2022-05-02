@@ -10,7 +10,7 @@ let randDelay = function() {
 
 function clickMore(el) {
     el.click();
-    console.log("clicked");
+    console.log("clicked three dots");
 
     let unfollowed = false;
     popoverDiv.find("span").each((i, menuItem) => {
@@ -22,6 +22,7 @@ function clickMore(el) {
       }
     })
     if (!unfollowed) {
+      console.log("no unfollow text found");
       //Click whatever div closes modals
     }
 }
