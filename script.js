@@ -2,7 +2,7 @@
 // let friendsContainer = $("[aira-label='All friends']");
 // let betterFriendsContainer = $(".sxpk6l6v");
 let evenBetterSelector = $("div[aria-label='More']");
-
+let popoverDiv = $("div")
 // evenBetterSelector.forEach((child) => {
 //     child.click();
 // })
@@ -10,6 +10,8 @@ let evenBetterSelector = $("div[aria-label='More']");
 function clickMore(el) {
     el.click();
     console.log("clicked");
+
+    popoverDiv.find("span")
 }
 
 function clickUnfollow(el) {
