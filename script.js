@@ -13,23 +13,28 @@ function clickMore(el) {
     console.log("clicked three dots");
 
     let unfollowed = false;
+    let foundButtons = [];
+  
+  
     popoverDiv.find("span").each((i, menuItem) => {
       if (!unfollowed && regex.test(menuItem.innerText)) {
-        unfollowed = true;
-        setTimeout(() => {
-          clickUnfollow(menuItem);
-        }, 400 + randDelay());
+        unfollowed = true;   
       }
     })
     if (!unfollowed) {
       console.log("no unfollow text found");
-      //Click whatever div closes modals
     }
+    setTimeout(() => {
+      clickUnfollow(foundButtons);
+      el.click() //closeModals
+    }, 400 + randDelay());
 }
 
-function clickUnfollow(el) {
-  el.click();
-  console.log("clicked: " + el.innerText);
+function clickUnfollow(elements) {
+  elements.forEach((el) => {
+    el.click();
+    console.log("clicked: " + el.innerText);
+  }
 }
 
 const delayLoop = (fn, delay) => {
