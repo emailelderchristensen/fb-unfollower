@@ -35,9 +35,10 @@ async function unfollower() {
       console.log("On friend ", i);
       i++;
     } else {
-      moreButtons[randomIntFromInterval(0,moreButtons.length)]
+      moreButtons[i - 20]
+      .scrollIntoView({behavior: "smooth", block: "center"});
       await sleep(1000 + randDelay());
-      moreButtons[i]
+      moreButtons[i - 1]
       .scrollIntoView({behavior: "smooth", block: "center"}) //scroll the user to the center
     }
     await sleep(500 + randDelay());
