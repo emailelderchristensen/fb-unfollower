@@ -38,10 +38,11 @@ async function waitForFriends(numberOfFriends) {
     
     console.log("Keep Scrolling up and down the friends list! Found " + moreButtons.length+"/"+ numberOfFriends + " Friends so far...")
     if (i > 5) {
-      console.log("Seems like you're not getting any new friends... Type \"start = true\" and press enter to continue anyway.")
+      console.log("Seems like you're not getting any new friends... Type \"go = true\" and press enter to continue anyway.")
       i = 0
     }
     await sleep(5000);
+    console.clear();
   } while (numberOfFriends - 10 > moreButtons.length);
 }
 
@@ -52,14 +53,14 @@ async function unfollower() {
   console.log("I found that you have " + numberOfFriends + " Friends");
   await waitForFriends(numberOfFriends);
   while(i < numberOfFriends) {
-    console.log("Looping!")
+    // console.log("Looping!")
     if (moreButtons.length > i) {
       let el = moreButtons[i];
       let unfollowed = false;
       await clickMore(el);
       await sleep(randDelay());
       await clickUnfollow(findMenuItems(el));
-      console.log("On friend ", i);
+      console.log("On friend ", i, " of ", numberOfFriends);
       i++;
     } else {
       moreButtons[i - 20]
@@ -94,7 +95,7 @@ function findMenuItems(el) {
     }
   })
   if (!successfulUnfollow) {
-    console.log("no unfollow text found");
+    // console.log("no unfollow text found");
     el.click(); //close Modals
   }
   return foundButtons;
@@ -106,7 +107,7 @@ async function clickUnfollow(elements) {
   elements.forEach(async (el, i) => {
     await sleep(400 * i + randDelay())
     el.click();
-    console.log("Clicked: " + el.innerText);
+    // console.log("Clicked: " + el.innerText);
   })
 }
 
