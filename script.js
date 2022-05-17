@@ -28,7 +28,7 @@ async function waitForFriends(numberOfFriends) {
   let i = 0
   let previousButtonCount = 0;
   do {
-    if (go === true) { return true}
+    if (go === true) { return moreButtons.length}
     let previousButtonCount = moreButtons.length;
     updateButtons();
     if (previousButtonCount <= moreButtons.length) {
@@ -51,30 +51,21 @@ async function unfollower() {
   let numberOfFriends = parseInt(friendsRegex.exec(friends.text())[1].replace(',',''))
   let i = 0;
   console.log("I found that you have " + numberOfFriends + " Friends");
-  await waitForFriends(numberOfFriends);
+  numberOfFriends = await waitForFriends(numberOfFriends);
   while(i < numberOfFriends) {
     // console.log("Looping!")
-    if (moreButtons.length > i) {
       let el = moreButtons[i];
       let unfollowed = false;
       await clickMore(el);
       await sleep(randDelay());
       await clickUnfollow(findMenuItems(el));
-      console.log("On friend ", i, " of ", numberOfFriends);
+      console.log("On friend ", i, " of ", numberOfFriends, " ETA: ", Math.floor((1.119 * (numberOfFriends - i))/60), "min");
       i++;
-    } else {
-      moreButtons[i - 20]
-      .scrollIntoView({behavior: "smooth", block: "center"});
-      await sleep(2000 + randDelay());
-      moreButtons[i - 1]
-      .scrollIntoView({behavior: "smooth", block: "center"}) //scroll the user to the center
-      await sleep(2000 + randDelay());
-    }
     await sleep(500 + randDelay());
     // updateButtons();
     // console.log("Looped: ", i, " times");
   }
-  return "Done!"
+  console.log("Done!")
 }
 
 async function clickMore(el) {
