@@ -59,7 +59,7 @@ async function unfollower() {
       await clickMore(el);
       await sleep(randDelay());
       await clickUnfollow(findMenuItems(el));
-      console.log("On friend ", i, " of ", numberOfFriends, " ETA: ", Math.floor((1.119 * (numberOfFriends - i))/60), "min");
+      console.log("On friend ", i+1, " of ", numberOfFriends, " ETA: ", Math.ceil((1.119 * (numberOfFriends - i))/60), "min");
       i++;
     await sleep(500 + randDelay());
     // updateButtons();
