@@ -43,7 +43,7 @@ async function waitForFriends(numberOfFriends) {
     }
     await sleep(5000);
     console.clear();
-  } while (numberOfFriends - 10 > moreButtons.length);
+  } while (true);
 }
 
 async function unfollower() {
