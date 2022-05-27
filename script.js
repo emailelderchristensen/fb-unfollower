@@ -59,7 +59,7 @@ async function unfollower() {
       await clickMore(el);
       await sleep(randDelay());
       await clickUnfollow(findMenuItems(el));
-      console.log("On friend ", i+1, " of ", numberOfFriends, " ETA: ", Math.ceil((1.119 * (numberOfFriends - i))/60), "min");
+      console.log("On friend ", i+1, " of ", numberOfFriends, " ETA: ", Math.ceil((2 * (numberOfFriends - i))/60), "min");
       i++;
     await sleep(500 + randDelay());
     // updateButtons();
@@ -96,7 +96,7 @@ async function clickUnfollow(elements) {
 
 
   elements.forEach(async (el, i) => {
-    await sleep(400 * i + randDelay())
+    await sleep(2000 * (i+1) + randDelay())
     el.click();
     // console.log("Clicked: " + el.innerText);
   })
